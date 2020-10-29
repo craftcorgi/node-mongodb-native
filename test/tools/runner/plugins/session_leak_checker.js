@@ -1,5 +1,6 @@
 'use strict';
 
+const chalk = require('chalk').default;
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const { Topology } = require('../../../../src/sdam/topology');
@@ -13,10 +14,10 @@ function getSessionLeakMetadata(currentTest) {
 }
 
 function dumpSessionInfo(which, sessions) {
-  console.log(which);
+  // console.log(which);
   sessions.forEach(session => {
-    console.log(` >> ${JSON.stringify(session.id)}`);
-    console.log(session.trace);
+    console.log(`${chalk.blue('⚗︎')} ${JSON.stringify({ leakedSession: session.id })}`);
+    //console.log(session.trace);
   });
 }
 

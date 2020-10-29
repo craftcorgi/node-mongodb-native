@@ -1,6 +1,6 @@
 'use strict';
 
-const EventEmitter = require('events');
+const EventEmitter = require('events').EventEmitter;
 const chai = require('chai');
 const expect = chai.expect;
 const { Db } = require('../../src/db');
@@ -15,7 +15,7 @@ class MockTopology extends EventEmitter {
   }
 }
 
-describe('Collection', function () {
+describe('Collection (unit)', function () {
   it('should not allow atomic operators for findOneAndReplace', {
     metadata: { requires: { topology: 'single' } },
     test: function () {

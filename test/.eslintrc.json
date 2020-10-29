@@ -43,5 +43,11 @@
       }
     }
   },
-  "ignorePatterns": ["mocha.ts"]
+  "ignorePatterns": ["mocha.ts"],
+  "overrides": [
+    {
+        "files": ["*.mjs"],
+        "parserOptions": {"sourceType": "module"}
+    }
+]
 }

@@ -3,7 +3,7 @@ const test = require('./shared').assert,
   setupDatabase = require('./shared').setupDatabase,
   expect = require('chai').expect;
 
-describe('Connection', function () {
+describe('Connection (functional)', function () {
   before(function () {
     return setupDatabase(this.configuration);
   });

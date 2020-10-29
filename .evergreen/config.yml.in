@@ -248,6 +248,7 @@ functions:
         params:
           working_dir: src
           script: |
+            ${PREPARE_SHELL}
             MONGODB_URI='mongodb://mhuser:pencil@localhost' NODE_LTS_NAME='${NODE_LTS_NAME}' \
             bash ${PROJECT_DIRECTORY}/.evergreen/run-data-lake-tests.sh
   "run tls tests":
@@ -484,6 +485,11 @@ functions:
             -v \
             --fault revoked
 
+  "upload test results":
+    - command: attach.xunit_results
+      params:
+        file: src/xunit.xml
+
 
 pre:
   - func: "fetch source"
@@ -493,4 +499,5 @@ pre:
   - func: "make files executable"
 
 post:
+  - func: "upload test results"
   - func: "cleanup"
